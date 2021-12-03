@@ -28,17 +28,16 @@ export default class Doubt extends React.Component {
     };
   }
   getQuestions = async () => {
+    this.setState({doubts:[]})
     var tempt = await db
       .collection('doubts')
       .where('email', '==', this.state.email)
       .get();
-    console.log(tempt.docs.length);
     this.setState({ noofquestions: tempt.docs.length });
     tempt.docs.map((x) => {
       var arr = this.state.doubts;
       arr.push(x.data());
       this.setState({ doubts: arr });
-      console.log(arr);
     });
   };
   componentDidMount = async () => {
@@ -310,6 +309,7 @@ export default class Doubt extends React.Component {
                         'Submitted!',
                         'Thank you for asking your question! We would love to answer your question. You can expect back from us within 48 hours! Happy Learing!'
                       );
+                        this.setState({question:''})
                       this.getQuestions();
                     } else {
                       alert('Please enter a valid question!');

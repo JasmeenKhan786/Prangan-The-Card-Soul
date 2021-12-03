@@ -238,6 +238,7 @@ export default class AboutUs extends React.Component {
                         }
                       ]
                     );
+                    this.setState({feedback:''})
                   } else {
                     alert('Please enter a valid feedback!');
                   }

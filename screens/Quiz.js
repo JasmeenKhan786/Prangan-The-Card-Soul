@@ -185,11 +185,15 @@ export default class QuizScreen extends React.Component {
 
               //navigate
               if (this.state.questionNumber < 9) {
+                this.setState({selected:''})
+
                 this.props.navigation.push('QuizScreen', {
                   questionNumber: this.state.questionNumber + 1,
                   score: score,
                 });
               } else {
+                this.setState({selected:''})
+
                 this.props.navigation.push('FinalScreen', { score: score });
               }
             }}>
